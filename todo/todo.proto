@@ -11,9 +11,13 @@ message TaskList {
     repeated Task tasks = 1;
 }
 
-message Void()
-
-service Tasks {
-    rpc List() returns(TaskList) {}
+message Text {
+    string text = 1;
 }
 
+message Void {}
+
+service Tasks {
+    rpc List(Void) returns(TaskList) {}
+    rpc Add(Text) returns(Task) {}
+}
